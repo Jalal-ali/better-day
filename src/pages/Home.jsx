@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
+import Flag from "react-world-flags";
 import topBanner from "../assets/top img.jpg"
 import orphanSupport from '../assets/donation icons/orphan.png'
 import sadaqahJariyah from '../assets/donation icons/sadqah.png'
@@ -11,101 +12,25 @@ import friends from '../assets/donation icons/friends.png'
 import volunteer from '../assets/donation icons/volunteer.png'
 import heart from '../assets/donation icons/heart.svg'
 import globe from '../assets/donation icons/globe.svg'
+import Visa from '../assets/visa.svg'
+import masterCard from '../assets/mastercard.svg'
+import paypal from '../assets/paypal.svg'
+import applepay from '../assets/applepay.svg'
 const Home = () => {
-
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [selectedCountry, setSelectedCountry] = useState({
-    code: '+1',
-    name: 'United States',
-    flag: (
-      <svg fill="none" aria-hidden="true" className="h-4 w-4 me-2" viewBox="0 0 20 15">
-        <rect width="19.6" height="14" y=".5" fill="#fff" rx="2"/>
-        <mask id="a" style={{ maskType: "luminance" }} width="20" height="15" x="0" y="0" maskUnits="userSpaceOnUse">
-          <rect width="19.6" height="14" y=".5" fill="#fff" rx="2"/>
-        </mask>
-        <g mask="url(#a)">
-          <path fill="#D02F44" fillRule="evenodd" d="M19.6.5H0v.933h19.6V.5zm0 1.867H0V3.3h19.6v-.933zM0 4.233h19.6v.934H0v-.934zM19.6 6.1H0v.933h19.6V6.1zM0 7.967h19.6V8.9H0v-.933zm19.6 1.866H0v.934h19.6v-.934zM0 11.7h19.6v.933H0V11.7zm19.6 1.867H0v.933h19.6v-.933z" clipRule="evenodd"/>
-          <path fill="#46467F" d="M0 .5h8.4v6.533H0z"/>
-          <g filter="url(#filter0_d_343_121520)">
-            <path fill="url(#paint0_linear_343_121520)" fillRule="evenodd" d="M1.867 1.9a.467.467 0 11-.934 0 .467.467 0 01.934 0zm1.866 0a.467.467 0 11-.933 0 .467.467 0 01.933 0zm1.4.467a.467.467 0 100-.934.467.467 0 000 .934zM7.467 1.9a.467.467 0 11-.934 0 .467.467 0 01.934 0zM2.333 3.3a.467.467 0 100-.933.467.467 0 000 .933zm2.334-.467a.467.467 0 11-.934 0 .467.467 0 01.934 0zm1.4.467a.467.467 0 100-.933.467.467 0 000 .933zm1.4.467a.467.467 0 11-.934 0 .467.467 0 01.934 0zm-2.334.466a.467.467 0 100-.933.467.467 0 000 .933zm-1.4-.466a.467.467 0 11-.933 0 .467.467 0 01.933 0zM1.4 4.233a.467.467 0 100-.933.467.467 0 000 .933zm1.4.467a.467.467 0 11-.933 0 .467.467 0 01.933 0zm1.4.467a.467.467 0 100-.934.467.467 0 000 .934zM6.533 4.7a.467.467 0 11-.933 0 .467.467 0 01.933 0zM7 6.1a.467.467 0 100-.933.467.467 0 000 .933zm-1.4-.467a.467.467 0 11-.933 0 .467.467 0 01.933 0zM3.267 6.1a.467.467 0 100-.933.467.467 0 000 .933zm-1.4-.467a.467.467 0 11-.934 0 .467.467 0 01.934 0z" clipRule="evenodd"/>
-          </g>
-        </g>
-      </svg>
-    )
-  });
-
-  const dropdownRef = useRef(null);
-
-  const countries = [
-    {
-      code: '+1',
-      name: 'United States',
-      flag: (
-        <svg fill="none" aria-hidden="true" className="h-4 w-4 me-2" viewBox="0 0 20 15">
-          {/* US flag SVG */}
-        </svg>
-      )
-    },
-    {
-      code: '+44',
-      name: 'United Kingdom',
-      flag: (
-        <svg className="h-4 w-4 me-2" fill="none" viewBox="0 0 20 15">
-          {/* UK flag SVG */}
-        </svg>
-      )
-    },
-    {
-      code: '+61',
-      name: 'Australia',
-      flag: (
-        <svg className="h-4 w-4 me-2" fill="none" viewBox="0 0 20 15">
-          {/* Australia flag SVG */}
-        </svg>
-      )
-    },
-    {
-      code: '+49',
-      name: 'Germany',
-      flag: (
-        <svg className="w-4 h-4 me-2" fill="none" viewBox="0 0 20 15">
-          {/* Germany flag SVG */}
-        </svg>
-      )
-    },
-    {
-      code: '+33',
-      name: 'France',
-      flag: (
-        <svg className="w-4 h-4 me-2" fill="none" viewBox="0 0 20 15">
-          {/* France flag SVG */}
-        </svg>
-      )
-    }
+  const currencies = [
+    { code: "USD", label: "USD", country: "US" },
+    { code: "EUR", label: "EUR", country: "EU" },
+    { code: "GBP", label: "GBP", country: "GB" },
+    { code: "CAD", label: "CAD", country: "CA" },
+    { code: "PKR", label: "PKR", country: "PK" },
   ];
+  const [selected, setSelected] = useState(currencies[0]);
+  const [open, setOpen] = useState(false);
 
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
+  const handleSelect = (currency) => {
+    setSelected(currency);
+    setOpen(false); // close dropdown after selection
   };
-
-  const selectCountry = (country) => {
-    setSelectedCountry(country);
-    setIsDropdownOpen(false);
-  };
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsDropdownOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
-  
   const iconMap = {
     'Orphan Support': orphanSupport,
     'Sadaqah Jariyah': sadaqahJariyah,
@@ -170,119 +95,99 @@ const Home = () => {
             {/* Donation Form */}
             <div className="flex flex-col md:flex-row gap-4">
               {/* Currency Selector */}
-           {/* <div className="flex-1 bg-white rounded-lg p-2 flex items-center">
-           <select className="p-2 border rounded-md text-sm text-gray-700">
+              <div className="flex-1 bg-white rounded-lg p-2 flex items-center">
+                {/* <select className="p-2 border rounded-md text-sm text-gray-700">
             <span><img src={globe} alt="" /><option value="PKR">PKR</option></span>
       
       <option value="USD">🇺🇸 USD</option>
       <option value="EUR">🇪🇺 EUR</option>
       <option value="GBP">🇬🇧 GBP</option>
       <option value="CAD">🇨🇦 CAD</option>
-    </select>
-          <input 
-            type="number" 
-            placeholder="150" 
-            className="bg-white border-none outline-none text-gray-700 w-20 ml-2"
-          />
-        </div> */}
-        {/* newwwwwww  */}
-<form className="max-w-sm mx-auto">
-      <div className="flex items-center" ref={dropdownRef}>
-        <button
-          id="dropdown-phone-button"
-          type="button"
-          className="shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600"
-          onClick={toggleDropdown}
-        >
-          {selectedCountry.flag}
-          {selectedCountry.code}
-          <svg
-            className="w-2.5 h-2.5 ms-2.5"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 10 6"
-          >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="m1 1 4 4 4-4"
-            />
-          </svg>
-        </button>
-        
-        <div
-          id="dropdown-phone"
-          className={`z-10 ${isDropdownOpen ? 'block' : 'hidden'} absolute mt-2 bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-52 dark:bg-gray-700`}
-        >
-          <ul
-            className="py-2 text-sm text-gray-700 dark:text-gray-200"
-            aria-labelledby="dropdown-phone-button"
-          >
-            {countries.map((country) => (
-              <li key={country.code}>
-                <button
-                  type="button"
-                  className="inline-flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
-                  onClick={() => selectCountry(country)}
-                >
-                  <div className="inline-flex items-center">
-                    {country.flag}
-                    {country.name} ({country.code})
-                  </div>
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
+    </select> */}
+                <div className="relative inline-block w-auto">
+                  {/* Button */}
+                  <button
+                    onClick={() => setOpen(!open)}
+                    className="w-full flex items-center justify-between border px-3 py-2 rounded-md bg-white text-gray-700"
+                  >
+                    <div className="flex items-center gap-2 mx-1">
+                      <Flag code={selected.country} style={{ width: 20, height: 14 }} />
+                      {selected.label}
+                    </div>
+                    <span>▼</span>
+                  </button>
 
-        <label
-          htmlFor="phone-input"
-          className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
-        >
-          Phone number:
-        </label>
-        <div className="relative w-full">
-          <input
-            type="tel"
-            id="phone-input"
-            className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-0 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-s-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
-            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-            placeholder="123-456-7890"
-            required
-          />
-        </div>
-      </div>
-    </form>
-
-
-        {/* ......  */}
-
+                  {/* Dropdown options */}
+                  {open && (
+                    <div className="absolute z-10 mt-1 w-full bg-white shadow border rounded-md">
+                      {currencies.map((currency) => (
+                        <div
+                          key={currency.code}
+                          onClick={() => handleSelect(currency)}
+                          className="px-3 py-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2"
+                        >
+                          <Flag code={currency.country} style={{ width: 20, height: 14 }} />
+                          {currency.label}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                <input
+                  type="number"
+                  placeholder="150"
+                  className="bg-white border-none outline-none text-gray-700 w-auto ml-2"
+                />
+              </div>
 
               {/* Category Selector */}
-              <div className="flex-1 bg-white rounded-lg p-2 flex items-center">
-                <select className="bg-white border-none outline-none text-gray-700 w-full h-full py-2 appearance-none">
+              <div className="flex-1 bg-white rounded-lg p-2 flex items-start relative">
+                <select className="bg-white border border-gray-300 rounded-md shadow-sm text-gray-700 w-full h-full py-2 px-3 pr-8 appearance-none text-start focus:outline-none focus:ring-2 focus:ring-blue-400">
                   <option value="where_most_needed">Where Most Needed</option>
                   <option value="water_projects">Water Projects</option>
                   <option value="orphan_support">Orphan Support</option>
                 </select>
+
+                {/* Custom arrow */}
+                <div className="pointer-events-none absolute right-5 top-1/2 transform -translate-y-1/2 text-gray-500">
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
               </div>
+
 
               {/* Quick Donate Button */}
               <div className="flex-1 bg-blue-200 rounded-lg p-2 flex items-center justify-between">
-                <button className="bg-gradient-to-r from-[#2471A3] to-[#165e8d]  text-white font-bold py-2 px-4 rounded-full hidden md:block">
-                  QUICK DONATE
-                </button>
-                <div className="flex items-center">
-                  <img
-                    src="/payment-icons.png"
-                    alt="Payment Methods"
-                    className="h-6 ml-2"
-                  />
-                </div>
-              </div>
+  <button className="bg-gradient-to-r from-[#2471A3] to-[#165e8d] text-white font-bold py-2 px-4 rounded-full hidden md:block">
+    QUICK DONATE
+  </button>
+
+  <div className="flex items-center space-x-3">
+    {/* Visa */}
+    <img src={Visa} alt="" className='w-10 h-10' />
+
+    {/* MasterCard */}
+        <img src={masterCard} alt="" className='w-10 h-10' />
+
+
+    {/* PayPal */}
+            <img src={paypal} alt="" className='w-10 h-10' />
+
+
+    {/* Apple Pay (optional) */}
+            <img src={applepay} alt="" className='w-10 h-10' />
+
+  </div>
+</div>
+
+
             </div>
           </div>
         </div>

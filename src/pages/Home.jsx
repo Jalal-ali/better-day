@@ -24,7 +24,7 @@ const Home = () => {
     { code: "CAD", label: "CAD", country: "CA" },
     { code: "PKR", label: "PKR", country: "PK" },
   ];
-  
+
   const [selected, setSelected] = useState(currencies[0]);
   const [open, setOpen] = useState(false);
 
@@ -62,18 +62,18 @@ const Home = () => {
     <div className="absolute inset-0 flex items-center justify-center md:justify-start px-4">
       {/* Mobile/Tablet: Centered content */}
       <div className="text-white w-full max-w-full text-center md:hidden">
-        <h2 className="text-2xl sm:text-3xl font-bold mb-2 sm:mb-3">
+        <h2 className="fade-down-heading text-2xl sm:text-3xl font-bold mb-2 sm:mb-3">
           We Need Your Support
         </h2>
-        <p className="text-sm sm:text-base mb-3 sm:mb-4 leading-tight sm:leading-normal">
+        <p className="paragraph-fade text-sm sm:text-base mb-3 sm:mb-4 leading-tight sm:leading-normal">
           Your contribution can transform lives by providing essential clean water to communities in need.
           Help us make a difference—support our mission today!
         </p>
         <div className="flex flex-col xs:flex-row justify-center gap-2 sm:gap-3">
-          <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium sm:font-bold py-1.5 px-3 sm:py-2 sm:px-4 rounded text-xs sm:text-sm transition-colors whitespace-nowrap">
+          <button className="fade-right bg-blue-600 hover:bg-blue-700 text-white font-medium sm:font-bold py-1.5 px-3 sm:py-2 sm:px-4 rounded text-xs sm:text-sm transition-colors whitespace-nowrap">
             Join Us
           </button>
-          <button className="border border-white hover:bg-white hover:text-gray-800 text-white font-medium sm:font-bold py-1.5 px-3 sm:py-2 sm:px-4 rounded text-xs sm:text-sm transition-colors whitespace-nowrap">
+          <button className="fade-right border border-white hover:bg-white hover:text-gray-800 text-white font-medium sm:font-bold py-1.5 px-3 sm:py-2 sm:px-4 rounded text-xs sm:text-sm transition-colors whitespace-nowrap">
             Learn More
           </button>
         </div>
@@ -81,16 +81,16 @@ const Home = () => {
       
       {/* Desktop: Original left-aligned content */}
       <div className="hidden md:block text-white max-w-[50%] pl-10 lg:pl-20">
-        <h2 className="text-3xl lg:text-4xl font-bold mb-4">We Need Your Support</h2>
-        <p className="text-lg mb-6">
+        <h2 className="fade-down-heading text-3xl lg:text-4xl font-bold mb-4">We Need Your Support</h2>
+        <p className="paragraph-fade text-lg mb-6">
           Your contribution can transform lives by providing essential clean water to communities in need. 
           Help us make a difference—support our mission today!
         </p>
         <div className="flex space-x-4">
-          <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded transition-colors">
+          <button className="fade-right bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded transition-colors">
             Join Us
           </button>
-          <button className="border-2 border-white hover:bg-white hover:text-gray-800 text-white font-bold py-2 px-6 rounded transition-colors">
+          <button className="fade-right border-2 border-white hover:bg-white hover:text-gray-800 text-white font-bold py-2 px-6 rounded transition-colors">
             Learn More
           </button>
         </div>
@@ -112,18 +112,23 @@ const Home = () => {
       {/* Navigation Links */}
       <div className="overflow-x-auto mb-4 md:mb-6 scrollbar-hide">
         <div className="flex space-x-4 md:space-x-8 w-max md:w-full md:justify-center">
-          {['Orphan Support', 'Sadaqah Jariyah', 'Zakat', 'Water Aid', 'Legacy', 'Contact'].map((item) => (
-            <div key={item} className="flex flex-col items-center min-w-[80px] md:min-w-[100px]">
-              <div className="w-auto rounded-full flex items-center justify-center mb-1 md:mb-2">
-                <img
-                  src={iconMap[item]}
-                  alt={item}
-                  className="w-8 h-8 md:w-[50px] md:h-[50px]"
-                />
-              </div>
-              <span className="text-white text-xs md:text-sm font-medium text-center">{item}</span>
-            </div>
-          ))}
+         {['Orphan Support', 'Sadaqah Jariyah', 'Zakat', 'Water Aid', 'Legacy', 'Contact'].map((item, index) => (
+  <div key={item} className="flex flex-col items-center min-w-[80px] md:min-w-[100px]">
+    <div 
+      className="bounce-circle w-auto rounded-full flex items-center justify-center mb-1 md:mb-2"
+      style={{
+        animationDelay: `${index * 0.15}s` // Use index instead of item
+      }}
+    >
+      <img
+        src={iconMap[item]}
+        alt={item}
+        className="w-8 h-8 md:w-[50px] md:h-[50px]"
+      />
+    </div>
+    <span className="text-white text-xs md:text-sm font-medium text-center">{item}</span>
+  </div>
+))}
         </div>
       </div>
 
@@ -223,7 +228,10 @@ const Home = () => {
               <div
                 key={index}
                 data-aos={index === 0 ? 'fade-right' : index === 1 ? 'flip-left' : 'fade-left'}
-                className="bg-white p-6 rounded-lg shadow-lg aos-init"
+                className="slide-right bg-white p-6 rounded-lg shadow-lg aos-init"
+                style={{
+            animationDelay: `${index * 0.5}s` // 0.2s delay between each
+          }}
               >
                 <img
                   alt={card.title}

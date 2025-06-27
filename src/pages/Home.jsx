@@ -45,33 +45,60 @@ const Home = () => {
 
       <div className="relative">
   {/* Banner Image with Text */}
+  <div className="relative">
+  {/* Banner Image with Text - Responsive */}
   <div className="relative h-[300px] sm:h-[350px] md:h-[485px]">
     <img
-      className="w-full h-full object-cover rounded-md"
+      className="w-full h-full object-cover "
       src={topBanner}
       alt="top image"
     />
+    
+    {/* Dark overlay */}
     <div className="absolute inset-0 bg-gray-700 opacity-60 rounded-md" />
-    <div className="absolute inset-0 flex items-center justify-center px-4">
-      <div className="text-white w-full max-w-full md:max-w-[80%] lg:max-w-[60%] xl:max-w-[50%] text-center md:text-left px-2 sm:px-4">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-3 md:mb-4">
+    
+    {/* Text container - responsive behavior */}
+    <div className="absolute inset-0 flex items-center justify-center md:justify-start px-4">
+      {/* Mobile/Tablet: Centered content */}
+      <div className="text-white w-full max-w-full text-center md:hidden">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-2 sm:mb-3">
           We Need Your Support
         </h2>
-        <p className="text-sm sm:text-base md:text-lg mb-3 sm:mb-4 md:mb-6 leading-tight sm:leading-normal">
+        <p className="text-sm sm:text-base mb-3 sm:mb-4 leading-tight sm:leading-normal">
           Your contribution can transform lives by providing essential clean water to communities in need.
           Help us make a difference—support our mission today!
         </p>
-        <div className="flex flex-col xs:flex-row justify-center md:justify-start gap-2 sm:gap-3 md:gap-4">
-          <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium sm:font-bold py-1.5 px-3 sm:py-2 sm:px-4 md:py-2 md:px-6 rounded text-xs sm:text-sm md:text-base transition-colors whitespace-nowrap">
+        <div className="flex flex-col xs:flex-row justify-center gap-2 sm:gap-3">
+          <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium sm:font-bold py-1.5 px-3 sm:py-2 sm:px-4 rounded text-xs sm:text-sm transition-colors whitespace-nowrap">
             Join Us
           </button>
-          <button className="border border-white hover:bg-white hover:text-gray-800 text-white font-medium sm:font-bold py-1.5 px-3 sm:py-2 sm:px-4 md:py-2 md:px-6 rounded text-xs sm:text-sm md:text-base transition-colors whitespace-nowrap">
+          <button className="border border-white hover:bg-white hover:text-gray-800 text-white font-medium sm:font-bold py-1.5 px-3 sm:py-2 sm:px-4 rounded text-xs sm:text-sm transition-colors whitespace-nowrap">
+            Learn More
+          </button>
+        </div>
+      </div>
+      
+      {/* Desktop: Original left-aligned content */}
+      <div className="hidden md:block text-white max-w-[50%] pl-10 lg:pl-20">
+        <h2 className="text-3xl lg:text-4xl font-bold mb-4">We Need Your Support</h2>
+        <p className="text-lg mb-6">
+          Your contribution can transform lives by providing essential clean water to communities in need. 
+          Help us make a difference—support our mission today!
+        </p>
+        <div className="flex space-x-4">
+          <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded transition-colors">
+            Join Us
+          </button>
+          <button className="border-2 border-white hover:bg-white hover:text-gray-800 text-white font-bold py-2 px-6 rounded transition-colors">
             Learn More
           </button>
         </div>
       </div>
     </div>
   </div>
+
+  
+</div>
 
   {/* Rest of your existing donation section */}
   <div className="container mx-auto px-4 md:px-6 -mt-12 sm:-mt-16 md:-mt-20 z-10 relative">

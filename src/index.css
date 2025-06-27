@@ -1,34 +1,7 @@
 @import "tailwindcss";
 
-/* top heading */
-.fade-down-heading {
-  animation: fadeDown 1s ease-out forwards;
-  opacity: 0;
-  transform: translateY(-60px);
-}
 
-@keyframes fadeDown {
-  from {
-    opacity: 0;
-    transform: translateY(-70px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-/* top para  */
-.paragraph-fade {
-  opacity: 0;
-  animation: fadeIn 1.5s ease-out forwards;
-  animation-delay: 0.3s; /* Optional delay */
-}
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-/* fade right animation  */
 .fade-right {
   opacity: 0;
   transform: translateX(-90px);
@@ -54,12 +27,6 @@
     opacity: 1;
     transform: translateX(0);
   }
-}
-
-@keyframes flip {
-  0% { transform: rotateY(0); }
-  50% { transform: rotateY(180deg); }
-  100% { transform: rotateY(0); }
 }
 
 

@@ -44,154 +44,129 @@ const Home = () => {
 
 
       <div className="relative">
-        {/* Banner Image with Text (from previous example) */}
-        <div className="relative">
-          <img
-            className="w-full h-[485px] object-cover "
-            src={topBanner}
-            alt="top image"
-          />
-          <div className="absolute inset-0 bg-gray-700 opacity-60 rounded-md" />
-          <div className="absolute inset-0 flex items-center">
-            <div className="text-white max-w-[50%] pl-10 md:pl-20">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">We Need Your Support</h2>
-              <p className="text-lg mb-6">
-                Your contribution can transform lives by providing essential clean water to communities in need.
-                Help us make a difference—support our mission today!
-              </p>
-              <div className="flex space-x-4">
-                <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded transition-colors">
-                  Join Us
-                </button>
-                <button className="border-2 border-white hover:bg-white hover:text-gray-800 text-white font-bold py-2 px-6 rounded transition-colors">
-                  Learn More
-                </button>
-              </div>
-            </div>
-          </div>
+  {/* Banner Image with Text */}
+  <div className="relative h-[300px] sm:h-[350px] md:h-[485px]">
+    <img
+      className="w-full h-full object-cover rounded-md"
+      src={topBanner}
+      alt="top image"
+    />
+    <div className="absolute inset-0 bg-gray-700 opacity-60 rounded-md" />
+    <div className="absolute inset-0 flex items-center justify-center px-4">
+      <div className="text-white w-full max-w-full md:max-w-[80%] lg:max-w-[60%] xl:max-w-[50%] text-center md:text-left px-2 sm:px-4">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-3 md:mb-4">
+          We Need Your Support
+        </h2>
+        <p className="text-sm sm:text-base md:text-lg mb-3 sm:mb-4 md:mb-6 leading-tight sm:leading-normal">
+          Your contribution can transform lives by providing essential clean water to communities in need.
+          Help us make a difference—support our mission today!
+        </p>
+        <div className="flex flex-col xs:flex-row justify-center md:justify-start gap-2 sm:gap-3 md:gap-4">
+          <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium sm:font-bold py-1.5 px-3 sm:py-2 sm:px-4 md:py-2 md:px-6 rounded text-xs sm:text-sm md:text-base transition-colors whitespace-nowrap">
+            Join Us
+          </button>
+          <button className="border border-white hover:bg-white hover:text-gray-800 text-white font-medium sm:font-bold py-1.5 px-3 sm:py-2 sm:px-4 md:py-2 md:px-6 rounded text-xs sm:text-sm md:text-base transition-colors whitespace-nowrap">
+            Learn More
+          </button>
         </div>
+      </div>
+    </div>
+  </div>
 
-        {/* New Donation Section */}
-        <div className="container mx-auto px-4 md:px-6 -mt-20 z-10 relative">
-          <div className="bg-[#2471A3] rounded-lg shadow-xl p-6">
-            {/* Navigation Links */}
-            <div className="overflow-x-auto mb-6 scrollbar-hide">
-              <div className="flex space-x-8 md:justify-center">
-                {['Orphan Support', 'Sadaqah Jariyah', 'Zakat', 'Water Aid', 'Legacy', 'Contact'].map((item) => (
-                  <div key={item} className="flex flex-col items-center min-w-[100px]">
-                    <div className="w-auto rounded-full flex items-center justify-center mb-2">
-                      <img
-                        src={iconMap[item]}
-                        alt={item}
-                        className="w-[50px] h-[50px]"
-                      />
-                    </div>
-                    <span className="text-white text-sm font-medium">{item}</span>
+  {/* Rest of your existing donation section */}
+  <div className="container mx-auto px-4 md:px-6 -mt-12 sm:-mt-16 md:-mt-20 z-10 relative">
+    {/* ... keep your existing donation section code ... */}
+  </div>
+
+  {/* New Donation Section */}
+  <div className="container mx-auto px-4 sm:px-6 -mt-10 md:-mt-20 z-10 relative">
+    <div className="bg-[#2471A3] rounded-lg shadow-xl p-4 md:p-6">
+      {/* Navigation Links */}
+      <div className="overflow-x-auto mb-4 md:mb-6 scrollbar-hide">
+        <div className="flex space-x-4 md:space-x-8 w-max md:w-full md:justify-center">
+          {['Orphan Support', 'Sadaqah Jariyah', 'Zakat', 'Water Aid', 'Legacy', 'Contact'].map((item) => (
+            <div key={item} className="flex flex-col items-center min-w-[80px] md:min-w-[100px]">
+              <div className="w-auto rounded-full flex items-center justify-center mb-1 md:mb-2">
+                <img
+                  src={iconMap[item]}
+                  alt={item}
+                  className="w-8 h-8 md:w-[50px] md:h-[50px]"
+                />
+              </div>
+              <span className="text-white text-xs md:text-sm font-medium text-center">{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Donation Form */}
+      <div className="flex flex-col md:flex-row gap-3 md:gap-4">
+        {/* Currency Selector */}
+        <div className="flex-1 bg-white rounded-lg p-2 flex items-center">
+          <div className="relative inline-block w-full">
+            <button
+              onClick={() => setOpen(!open)}
+              className="w-full flex items-center justify-between border px-3 py-2 rounded-md bg-white text-gray-700 text-sm md:text-base"
+            >
+              <div className="flex items-center gap-2 mx-1">
+                <Flag code={selected.country} style={{ width: 20, height: 14 }} />
+                {selected.label}
+              </div>
+              <span>▼</span>
+            </button>
+
+            {open && (
+              <div className="absolute z-10 mt-1 w-full bg-white shadow border rounded-md">
+                {currencies.map((currency) => (
+                  <div
+                    key={currency.code}
+                    onClick={() => handleSelect(currency)}
+                    className="px-3 py-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2 text-sm md:text-base"
+                  >
+                    <Flag code={currency.country} style={{ width: 20, height: 14 }} />
+                    {currency.label}
                   </div>
                 ))}
               </div>
-            </div>
+            )}
+          </div>
+          <input
+            type="number"
+            placeholder="150"
+            className="bg-white border-none outline-none text-gray-700 w-20 md:w-auto ml-2 text-sm md:text-base"
+          />
+        </div>
 
-            {/* Donation Form */}
-            <div className="flex flex-col md:flex-row gap-4">
-              {/* Currency Selector */}
-              <div className="flex-1 bg-white rounded-lg p-2 flex items-center">
-                {/* <select className="p-2 border rounded-md text-sm text-gray-700">
-            <span><img src={globe} alt="" /><option value="PKR">PKR</option></span>
-      
-      <option value="USD">🇺🇸 USD</option>
-      <option value="EUR">🇪🇺 EUR</option>
-      <option value="GBP">🇬🇧 GBP</option>
-      <option value="CAD">🇨🇦 CAD</option>
-    </select> */}
-                <div className="relative inline-block w-auto">
-                  {/* Button */}
-                  <button
-                    onClick={() => setOpen(!open)}
-                    className="w-full flex items-center justify-between border px-3 py-2 rounded-md bg-white text-gray-700"
-                  >
-                    <div className="flex items-center gap-2 mx-1">
-                      <Flag code={selected.country} style={{ width: 20, height: 14 }} />
-                      {selected.label}
-                    </div>
-                    <span>▼</span>
-                  </button>
+        {/* Category Selector */}
+        <div className="flex-1 bg-white rounded-lg p-2 flex items-start relative">
+          <select className="bg-white border border-gray-300 rounded-md shadow-sm text-gray-700 w-full h-full py-2 px-3 pr-8 appearance-none text-start focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm md:text-base">
+            <option value="where_most_needed">Where Most Needed</option>
+            <option value="water_projects">Water Projects</option>
+            <option value="orphan_support">Orphan Support</option>
+          </select>
+          <div className="pointer-events-none absolute right-3 md:right-5 top-1/2 transform -translate-y-1/2 text-gray-500">
+            <svg className="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </div>
 
-                  {/* Dropdown options */}
-                  {open && (
-                    <div className="absolute z-10 mt-1 w-full bg-white shadow border rounded-md">
-                      {currencies.map((currency) => (
-                        <div
-                          key={currency.code}
-                          onClick={() => handleSelect(currency)}
-                          className="px-3 py-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2"
-                        >
-                          <Flag code={currency.country} style={{ width: 20, height: 14 }} />
-                          {currency.label}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-                <input
-                  type="number"
-                  placeholder="150"
-                  className="bg-white border-none outline-none text-gray-700 w-auto ml-2"
-                />
-              </div>
-
-              {/* Category Selector */}
-              <div className="flex-1 bg-white rounded-lg p-2 flex items-start relative">
-                <select className="bg-white border border-gray-300 rounded-md shadow-sm text-gray-700 w-full h-full py-2 px-3 pr-8 appearance-none text-start focus:outline-none focus:ring-2 focus:ring-blue-400">
-                  <option value="where_most_needed">Where Most Needed</option>
-                  <option value="water_projects">Water Projects</option>
-                  <option value="orphan_support">Orphan Support</option>
-                </select>
-
-                {/* Custom arrow */}
-                <div className="pointer-events-none absolute right-5 top-1/2 transform -translate-y-1/2 text-gray-500">
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M19 9l-7 7-7-7" />
-                  </svg>
-                </div>
-              </div>
-
-
-              {/* Quick Donate Button */}
-              <div className="flex-1 bg-blue-200 rounded-lg p-2 flex items-center justify-between">
-  <button className="bg-gradient-to-r from-[#2471A3] to-[#165e8d] text-white font-bold py-2 px-4 rounded-full hidden md:block">
-    QUICK DONATE
-  </button>
-
-  <div className="flex items-center space-x-3">
-    {/* Visa */}
-    <img src={Visa} alt="" className='w-10 h-10' />
-
-    {/* MasterCard */}
-        <img src={masterCard} alt="" className='w-10 h-10' />
-
-
-    {/* PayPal */}
-            <img src={paypal} alt="" className='w-10 h-10' />
-
-
-    {/* Apple Pay (optional) */}
-            <img src={applepay} alt="" className='w-10 h-10' />
-
-  </div>
-</div>
-
-
-            </div>
+        {/* Quick Donate Button */}
+        <div className="flex-1 bg-blue-200 rounded-lg p-2 flex flex-col md:flex-row items-center justify-between gap-2">
+          <button className="bg-gradient-to-r from-[#2471A3] to-[#165e8d] text-white font-bold py-2 px-4 rounded-full w-full md:w-auto text-sm md:text-base">
+            QUICK DONATE
+          </button>
+          <div className="flex items-center justify-center md:justify-end space-x-2 md:space-x-3">
+            <img src={Visa} alt="Visa" className='w-8 h-8 md:w-10 md:h-10' />
+            <img src={masterCard} alt="MasterCard" className='w-8 h-8 md:w-10 md:h-10' />
+            <img src={paypal} alt="PayPal" className='w-8 h-8 md:w-10 md:h-10' />
+            <img src={applepay} alt="Apple Pay" className='w-8 h-8 md:w-10 md:h-10' />
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
 
       <main className="flex min-h-screen flex-col items-center justify-between overflow-hidden">
         {/* Feature Cards */}

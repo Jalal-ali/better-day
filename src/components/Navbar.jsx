@@ -33,22 +33,22 @@ const Navbar = () => {
       <ul className="md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0">
         <li>
           
-          <a className="md:p-4 py-3 px-0 block" href="/">
+          <a className="md:p-4 py-3 px-0 block hover:font-semibold hover:text-[#2471a3]" href="/">
             Home
           </a>
         </li>
         <li>
-          <a className="md:p-4 py-3 px-0 block" href="/about">
+          <a className="md:p-4 py-3 px-0 block hover:font-semibold hover:text-[#2471a3]" href="/about">
             About
           </a>
         </li>
         <li>
-          <a className="md:p-4 py-3 px-0 block" href="#">
+          <a className="md:p-4 py-3 px-0 block hover:font-semibold hover:text-[#2471a3]" href="#">
             Gallery
           </a>
         </li>
         <li>
-          <a className="md:p-4 py-3 px-0 block md:mb-0 mb-2 font-cust" href="#">
+          <a className="md:p-4 py-3 px-0 block hover:font-semibold hover:text-[#2471a3]" href="/contact">
             Contact
           </a>
         </li>

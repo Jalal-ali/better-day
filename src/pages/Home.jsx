@@ -1,8 +1,529 @@
-import React from 'react'
-
+import React, { useEffect, useRef, useState } from 'react'
+import topBanner from "../assets/top img.jpg"
+import orphanSupport from '../assets/donation icons/orphan.png'
+import sadaqahJariyah from '../assets/donation icons/sadqah.png'
+import zakat from '../assets/donation icons/zakat.png'
+import waterAid from '../assets/donation icons/water.png'
+import legacy from '../assets/donation icons/legacy.png'
+import contact from '../assets/donation icons/contact.png'
+import donation from '../assets/donation icons/donation.png'
+import friends from '../assets/donation icons/friends.png'
+import volunteer from '../assets/donation icons/volunteer.png'
+import heart from '../assets/donation icons/heart.svg'
+import globe from '../assets/donation icons/globe.svg'
 const Home = () => {
+
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [selectedCountry, setSelectedCountry] = useState({
+    code: '+1',
+    name: 'United States',
+    flag: (
+      <svg fill="none" aria-hidden="true" className="h-4 w-4 me-2" viewBox="0 0 20 15">
+        <rect width="19.6" height="14" y=".5" fill="#fff" rx="2"/>
+        <mask id="a" style={{ maskType: "luminance" }} width="20" height="15" x="0" y="0" maskUnits="userSpaceOnUse">
+          <rect width="19.6" height="14" y=".5" fill="#fff" rx="2"/>
+        </mask>
+        <g mask="url(#a)">
+          <path fill="#D02F44" fillRule="evenodd" d="M19.6.5H0v.933h19.6V.5zm0 1.867H0V3.3h19.6v-.933zM0 4.233h19.6v.934H0v-.934zM19.6 6.1H0v.933h19.6V6.1zM0 7.967h19.6V8.9H0v-.933zm19.6 1.866H0v.934h19.6v-.934zM0 11.7h19.6v.933H0V11.7zm19.6 1.867H0v.933h19.6v-.933z" clipRule="evenodd"/>
+          <path fill="#46467F" d="M0 .5h8.4v6.533H0z"/>
+          <g filter="url(#filter0_d_343_121520)">
+            <path fill="url(#paint0_linear_343_121520)" fillRule="evenodd" d="M1.867 1.9a.467.467 0 11-.934 0 .467.467 0 01.934 0zm1.866 0a.467.467 0 11-.933 0 .467.467 0 01.933 0zm1.4.467a.467.467 0 100-.934.467.467 0 000 .934zM7.467 1.9a.467.467 0 11-.934 0 .467.467 0 01.934 0zM2.333 3.3a.467.467 0 100-.933.467.467 0 000 .933zm2.334-.467a.467.467 0 11-.934 0 .467.467 0 01.934 0zm1.4.467a.467.467 0 100-.933.467.467 0 000 .933zm1.4.467a.467.467 0 11-.934 0 .467.467 0 01.934 0zm-2.334.466a.467.467 0 100-.933.467.467 0 000 .933zm-1.4-.466a.467.467 0 11-.933 0 .467.467 0 01.933 0zM1.4 4.233a.467.467 0 100-.933.467.467 0 000 .933zm1.4.467a.467.467 0 11-.933 0 .467.467 0 01.933 0zm1.4.467a.467.467 0 100-.934.467.467 0 000 .934zM6.533 4.7a.467.467 0 11-.933 0 .467.467 0 01.933 0zM7 6.1a.467.467 0 100-.933.467.467 0 000 .933zm-1.4-.467a.467.467 0 11-.933 0 .467.467 0 01.933 0zM3.267 6.1a.467.467 0 100-.933.467.467 0 000 .933zm-1.4-.467a.467.467 0 11-.934 0 .467.467 0 01.934 0z" clipRule="evenodd"/>
+          </g>
+        </g>
+      </svg>
+    )
+  });
+
+  const dropdownRef = useRef(null);
+
+  const countries = [
+    {
+      code: '+1',
+      name: 'United States',
+      flag: (
+        <svg fill="none" aria-hidden="true" className="h-4 w-4 me-2" viewBox="0 0 20 15">
+          {/* US flag SVG */}
+        </svg>
+      )
+    },
+    {
+      code: '+44',
+      name: 'United Kingdom',
+      flag: (
+        <svg className="h-4 w-4 me-2" fill="none" viewBox="0 0 20 15">
+          {/* UK flag SVG */}
+        </svg>
+      )
+    },
+    {
+      code: '+61',
+      name: 'Australia',
+      flag: (
+        <svg className="h-4 w-4 me-2" fill="none" viewBox="0 0 20 15">
+          {/* Australia flag SVG */}
+        </svg>
+      )
+    },
+    {
+      code: '+49',
+      name: 'Germany',
+      flag: (
+        <svg className="w-4 h-4 me-2" fill="none" viewBox="0 0 20 15">
+          {/* Germany flag SVG */}
+        </svg>
+      )
+    },
+    {
+      code: '+33',
+      name: 'France',
+      flag: (
+        <svg className="w-4 h-4 me-2" fill="none" viewBox="0 0 20 15">
+          {/* France flag SVG */}
+        </svg>
+      )
+    }
+  ];
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const selectCountry = (country) => {
+    setSelectedCountry(country);
+    setIsDropdownOpen(false);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+  
+  const iconMap = {
+    'Orphan Support': orphanSupport,
+    'Sadaqah Jariyah': sadaqahJariyah,
+    'Zakat': zakat,
+    'Water Aid': waterAid,
+    'Legacy': legacy,
+    'Contact': contact
+  };
   return (
-    <div>home</div>
+    <>
+
+
+      <div className="relative">
+        {/* Banner Image with Text (from previous example) */}
+        <div className="relative">
+          <img
+            className="w-full h-[485px] object-cover "
+            src={topBanner}
+            alt="top image"
+          />
+          <div className="absolute inset-0 bg-gray-700 opacity-60 rounded-md" />
+          <div className="absolute inset-0 flex items-center">
+            <div className="text-white max-w-[50%] pl-10 md:pl-20">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">We Need Your Support</h2>
+              <p className="text-lg mb-6">
+                Your contribution can transform lives by providing essential clean water to communities in need.
+                Help us make a difference—support our mission today!
+              </p>
+              <div className="flex space-x-4">
+                <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded transition-colors">
+                  Join Us
+                </button>
+                <button className="border-2 border-white hover:bg-white hover:text-gray-800 text-white font-bold py-2 px-6 rounded transition-colors">
+                  Learn More
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* New Donation Section */}
+        <div className="container mx-auto px-4 md:px-6 -mt-20 z-10 relative">
+          <div className="bg-[#2471A3] rounded-lg shadow-xl p-6">
+            {/* Navigation Links */}
+            <div className="overflow-x-auto mb-6 scrollbar-hide">
+              <div className="flex space-x-8 md:justify-center">
+                {['Orphan Support', 'Sadaqah Jariyah', 'Zakat', 'Water Aid', 'Legacy', 'Contact'].map((item) => (
+                  <div key={item} className="flex flex-col items-center min-w-[100px]">
+                    <div className="w-auto rounded-full flex items-center justify-center mb-2">
+                      <img
+                        src={iconMap[item]}
+                        alt={item}
+                        className="w-[50px] h-[50px]"
+                      />
+                    </div>
+                    <span className="text-white text-sm font-medium">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Donation Form */}
+            <div className="flex flex-col md:flex-row gap-4">
+              {/* Currency Selector */}
+           {/* <div className="flex-1 bg-white rounded-lg p-2 flex items-center">
+           <select className="p-2 border rounded-md text-sm text-gray-700">
+            <span><img src={globe} alt="" /><option value="PKR">PKR</option></span>
+      
+      <option value="USD">🇺🇸 USD</option>
+      <option value="EUR">🇪🇺 EUR</option>
+      <option value="GBP">🇬🇧 GBP</option>
+      <option value="CAD">🇨🇦 CAD</option>
+    </select>
+          <input 
+            type="number" 
+            placeholder="150" 
+            className="bg-white border-none outline-none text-gray-700 w-20 ml-2"
+          />
+        </div> */}
+        {/* newwwwwww  */}
+<form className="max-w-sm mx-auto">
+      <div className="flex items-center" ref={dropdownRef}>
+        <button
+          id="dropdown-phone-button"
+          type="button"
+          className="shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600"
+          onClick={toggleDropdown}
+        >
+          {selectedCountry.flag}
+          {selectedCountry.code}
+          <svg
+            className="w-2.5 h-2.5 ms-2.5"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 10 6"
+          >
+            <path
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="m1 1 4 4 4-4"
+            />
+          </svg>
+        </button>
+        
+        <div
+          id="dropdown-phone"
+          className={`z-10 ${isDropdownOpen ? 'block' : 'hidden'} absolute mt-2 bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-52 dark:bg-gray-700`}
+        >
+          <ul
+            className="py-2 text-sm text-gray-700 dark:text-gray-200"
+            aria-labelledby="dropdown-phone-button"
+          >
+            {countries.map((country) => (
+              <li key={country.code}>
+                <button
+                  type="button"
+                  className="inline-flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
+                  onClick={() => selectCountry(country)}
+                >
+                  <div className="inline-flex items-center">
+                    {country.flag}
+                    {country.name} ({country.code})
+                  </div>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <label
+          htmlFor="phone-input"
+          className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+        >
+          Phone number:
+        </label>
+        <div className="relative w-full">
+          <input
+            type="tel"
+            id="phone-input"
+            className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-0 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-s-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            placeholder="123-456-7890"
+            required
+          />
+        </div>
+      </div>
+    </form>
+
+
+        {/* ......  */}
+
+
+              {/* Category Selector */}
+              <div className="flex-1 bg-white rounded-lg p-2 flex items-center">
+                <select className="bg-white border-none outline-none text-gray-700 w-full h-full py-2 appearance-none">
+                  <option value="where_most_needed">Where Most Needed</option>
+                  <option value="water_projects">Water Projects</option>
+                  <option value="orphan_support">Orphan Support</option>
+                </select>
+              </div>
+
+              {/* Quick Donate Button */}
+              <div className="flex-1 bg-blue-200 rounded-lg p-2 flex items-center justify-between">
+                <button className="bg-gradient-to-r from-[#2471A3] to-[#165e8d]  text-white font-bold py-2 px-4 rounded-full hidden md:block">
+                  QUICK DONATE
+                </button>
+                <div className="flex items-center">
+                  <img
+                    src="/payment-icons.png"
+                    alt="Payment Methods"
+                    className="h-6 ml-2"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <main className="flex min-h-screen flex-col items-center justify-between overflow-hidden">
+        {/* Feature Cards */}
+        <div className="container mx-auto md:px-20 px-2 py-12 my-20">
+          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                img: donation,
+                title: 'GIVE DONATION',
+                text: 'Give donations for the events which we are conducting for the children and senior citizens.',
+                link: 'Give Donation →'
+              },
+              {
+                img: volunteer,
+                title: 'BECOME VOLUNTEER',
+                text: 'Give donations for the events which we are conducting for the children and senior citizens.',
+                link: 'Learn More →'
+              },
+              {
+                img: friends,
+                title: 'SHARE TO FRIENDS',
+                text: 'Give donations for the events which we are conducting for the children and senior citizens.',
+                link: 'Share Now →'
+              }
+            ].map((card, index) => (
+              <div
+                key={index}
+                data-aos={index === 0 ? 'fade-right' : index === 1 ? 'flip-left' : 'fade-left'}
+                className="bg-white p-6 rounded-lg shadow-lg aos-init"
+              >
+                <img
+                  alt={card.title}
+                  src={`${card.img}`}
+                  className="mx-auto mb-4 w-50 h-50"
+                />
+                <h2 className="text-xl text-black font-bold mb-2">{card.title}</h2>
+                <p className="text-gray-600 mb-4">{card.text}</p>
+                <a href="#" className="text-[#2471A3] font-semibold">
+                  {card.link}
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Project Section */}
+        <div className="w-full">
+          <div className="mx-auto py-12">
+            <div className="bg-[#2471A3] md:h-[80vh] py-5 md:py-2 md:px-20 text-white p-2 md:p-8 flex flex-wrap items-center">
+              <div className="md:w-1/2 w-full mb-3 md:mb-0">
+                <img
+                  data-aos="zoom-in"
+                  className="w-full h-auto rounded-lg aos-init"
+                  src="https://preview.colorlib.com/theme/lovecare/images/bg_1.jpg.webp"
+                  alt="Project Image"
+                />
+              </div>
+              <div className="md:w-1/2 md:pl-8 md:px-5 w-full">
+                <p className="uppercase tracking-wide text-sm font-bold mb-2">
+                  Projects
+                </p>
+                <h2 className="text-3xl font-extrabold mb-3">Project AquaLift</h2>
+                <p className="text-md leading-relaxed mb-2" style={{ lineHeight: '1.425' }}>
+                  Project AquaLift is dedicated to enhancing access to clean water
+                  by installing hand pumps in communities that need them most. Just
+                  as lifting a well brings life-sustaining water to the surface, our
+                  project brings essential resources to areas struggling with water
+                  scarcity.
+                  <br /><br />
+                  Through Project AquaLift, we assess the specific needs of each
+                  community and provide hand pumps to ensure a reliable and safe
+                  water supply. This initiative not only improves health and hygiene
+                  but also empowers families and supports local development.
+                  <br /><br />
+                  Join us in making a lasting impact by helping us bring clean water
+                  and hope to those in need.
+                </p>
+                <a href="#" className="text-white font-semibold underline">
+                  Learn More →
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Welcome Section */}
+        <div className="w-full my-0">
+          <div className="container bg-[#F7F9F9] md:px-10 px-2 mx-auto py-12">
+            <div className="flex flex-col md:flex-row">
+              <div className="md:p-8 p-2 md:pr-40 w-full md:w-2/3">
+                <h1 className="text-[#2471A3] text-3xl uppercase font-bold">
+                  Welcome to The Better Day
+                </h1>
+                <h2 className="text-2xl text-gray-400 mt-2 mb-4">
+                  Bringing Clean Water to Communities
+                </h2>
+                <p className="text-gray-700 mb-6">
+                  At The Better Day, our mission is to provide clean, accessible water
+                  through hand pumps, transforming lives and supporting brighter
+                  futures. Many communities still lack reliable access to safe
+                  drinking water, but with each hand pump we install, we bring health,
+                  hygiene, and hope closer to those in need.
+                </p>
+                <p className="text-gray-700 mb-6">
+                  Our hand pumps reduce the time spent fetching water, allowing
+                  children to focus on their education and families to improve their
+                  lives. Join us in making a better day for countless individuals by
+                  supporting our clean water initiatives.
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  {[
+                    {
+                      icon: heart,
+                      text: 'Start Donating'
+                    },
+                    {
+                      icon: globe,
+                      text: 'Join Our Community'
+                    },
+                    {
+                      icon: heart,
+                      text: 'Be A Volunteer'
+                    }
+                  ].map((item, index) => (
+                    <div key={index} className="bg-[#2471A3] rounded-lg p-4 flex flex-col items-center">
+                      {/* Icon Container */}
+                      <div className="relative w-12 h-12 rounded-full mb-2 bg-white flex items-center justify-center">
+                        {/* Centered Image */}
+                        <img
+                          src={item.icon}
+                          alt={item.text}
+                          className="w-8 h-8 object-contain"
+                        />
+                      </div>
+                      {/* Text Label */}
+                      <span className="text-white font-bold text-sm">{item.text}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              {/* donation form section  */}
+              <div
+                data-aos="fade-up-left"
+                className="bg-[#2471A3] rounded-lg text-white p-8 w-full md:w-1/3 aos-init"
+              >
+                <h2 className="text-xl font-bold mb-4">Donate Now</h2>
+                <p className="mb-6">Giving is the greatest act of grace</p>
+
+                <form className="space-y-4">
+                  {/* Name Field */}
+                  <div>
+                    <label className="block mb-1 text-sm font-medium">Your Full Name</label>
+                    <div className="relative">
+                      <input
+                        type="text"
+                        className="w-full p-3 rounded-lg text-gray-800 bg-white border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="Your Full Name"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Email Field */}
+                  <div>
+                    <label className="block mb-1 text-sm font-medium">Email Address</label>
+                    <div className="relative">
+                      <input
+                        type="email"
+                        className="w-full p-3 rounded-lg text-gray-800 bg-white border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="Email"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Amount Field */}
+                  <div>
+                    <label className="block mb-1 text-sm font-medium">Amount to Give</label>
+                    <div className="relative">
+                      <input
+                        type="number"
+                        className="w-full p-3 rounded-lg text-gray-800 bg-white border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="Amount"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Payment Options */}
+                  <div className="pt-2">
+                    <label className="block mb-3 text-sm font-medium">Payment Method</label>
+                    <div className="flex flex-wrap gap-4">
+                      <div className="flex items-center">
+                        <input
+                          type="radio"
+                          id="paypal"
+                          name="payment"
+                          className="h-4 w-4 text-blue-600 focus:ring-blue-500"
+                        />
+                        <label htmlFor="paypal" className="ml-2 text-sm">Paypal</label>
+                      </div>
+                      <div className="flex items-center">
+                        <input
+                          type="radio"
+                          id="credit-card"
+                          name="payment"
+                          className="h-4 w-4 text-blue-600 focus:ring-blue-500"
+                        />
+                        <label htmlFor="credit-card" className="ml-2 text-sm">Credit Card</label>
+                      </div>
+                      <div className="flex items-center">
+                        <input
+                          type="radio"
+                          id="payoneer"
+                          name="payment"
+                          className="h-4 w-4 text-blue-600 focus:ring-blue-500"
+                        />
+                        <label htmlFor="payoneer" className="ml-2 text-sm">Payoneer</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Submit Button */}
+                  <button
+                    type="submit"
+                    className="w-full mt-6 bg-white text-[#2471A3] hover:bg-gray-100 font-bold py-3 px-4 rounded-lg transition-colors duration-200 shadow-md"
+                  >
+                    Donate Now
+                  </button>
+                </form>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </main>
+
+
+    </>
   )
 }
 

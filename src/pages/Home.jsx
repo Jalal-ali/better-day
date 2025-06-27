@@ -24,6 +24,7 @@ const Home = () => {
     { code: "CAD", label: "CAD", country: "CA" },
     { code: "PKR", label: "PKR", country: "PK" },
   ];
+  
   const [selected, setSelected] = useState(currencies[0]);
   const [open, setOpen] = useState(false);
 

@@ -49,8 +49,6 @@ const Home = () => {
   };
   return (
     <>
-
-
       <div className="relative">
         {/* Banner Image with Text */}
         <div className="relative">

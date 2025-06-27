@@ -24,7 +24,6 @@ const About = () => {
               <div className="prose text-gray-700">
                 <p className="mb-4">
                   Welcome to <strong>The Better Day</strong>, an NGO dedicated to ensuring access to clean water across Pakistan. Our mission is to install water wells in regions where this vital resource is unavailable, transforming lives and communities one well at a time. Clean water is a basic human right, yet many areas still lack access to it. We are committed to changing this by targeting underserved communities and improving health outcomes. By providing sustainable water solutions, we aim to enhance the quality of life for countless individuals. Join us in our mission to bring clean water to every corner of Pakistan. Your support through donations, volunteering, or spreading the word can make a significant difference. Together, we can ensure that every community has the clean water it needs to thrive.</p>
-
               </div>
             </motion.div>
 

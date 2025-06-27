@@ -37,7 +37,7 @@ const Home = () => {
 
   const handleSelect = (currency) => {
     setSelected(currency);
-    setOpen(false); // close dropdown after selection
+    setOpen(false); 
   };
   const iconMap = {
     'Orphan Support': orphanSupport,
@@ -49,6 +49,7 @@ const Home = () => {
   };
   return (
     <>
+
       <div className="relative">
         {/* Banner Image with Text */}
         <div className="relative">
@@ -63,7 +64,7 @@ const Home = () => {
             {/* Dark overlay */}
             <div className="absolute inset-0 bg-gray-700 opacity-60 rounded-md" />
 
-            {/* Text container - responsive behavior */}
+            {/* Text container -  */}
             <div className="absolute inset-0 flex items-center justify-center md:justify-start px-4">
               {/* Mobile/Tablet: Centered content */}
               <div className="text-white w-full max-w-full text-center md:hidden">
@@ -71,9 +72,9 @@ const Home = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{
                     duration: 1,
-                    ease: [0.16, 1, 0.3, 1], // Better ease-out than CSS's ease-out
-                    type: "spring", // Optional: for bouncier motion
-                    stiffness: 100 // Spring physics adjustment
+                    ease: [0.16, 1, 0.3, 1], 
+                    type: "spring", 
+                    stiffness: 100 
                   }} className=" text-2xl sm:text-3xl font-bold mb-2 sm:mb-3">
                   We Need Your Support
                 </motion.h2>
@@ -119,9 +120,9 @@ const Home = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{
                     duration: 1,
-                    ease: [0.16, 1, 0.3, 1], // Better ease-out than CSS's ease-out
-                    type: "spring", // Optional: for bouncier motion
-                    stiffness: 100 // Spring physics adjustment
+                    ease: [0.16, 1, 0.3, 1], 
+                    type: "spring", 
+                    stiffness: 100 
                   }} className=" text-3xl lg:text-4xl font-bold mb-4">We Need Your Support</motion.h2>
                 <motion.p
                   initial={{ opacity: 0 }}
@@ -179,7 +180,7 @@ const Home = () => {
                     <div
                       className="bounce-circle w-auto rounded-full flex items-center justify-center mb-1 md:mb-2"
                       style={{
-                        animationDelay: `${index * 0.15}s` // Use index instead of item
+                        animationDelay: `${index * 0.15}s` 
                       }}
                     >
                       <img
@@ -319,12 +320,12 @@ const Home = () => {
             <div className="bg-[#2471A3] md:h-[80vh] py-5 md:py-2 md:px-20 text-white p-2 md:p-8 flex flex-wrap items-center">
               <div className="md:w-1/2 w-full mb-3 md:mb-0">
                 <motion.img
-                  initial={{ opacity: 0, x: 600 }} // Starts way off-screen left
+                  initial={{ opacity: 0, x: 600 }} 
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-20%" }}
                   transition={{
                     duration: 1.2,
-                    ease: [0.19, 1, 0.3, 1] // Smooth deceleration
+                    ease: [0.19, 1, 0.3, 1] 
                   }}
                   className="w-full h-auto rounded-lg"
                   src="https://preview.colorlib.com/theme/lovecare/images/bg_1.jpg.webp"
@@ -337,7 +338,7 @@ const Home = () => {
                 viewport={{ once: true, margin: "-20%" }}
                 transition={{
                   duration: 1.8,
-                  ease: [0.16, 1, 0.3, 1] // Smooth deceleration
+                  ease: [0.16, 1, 0.3, 1] 
                 }}
                 className="md:w-1/2 md:pl-8 md:px-5 w-full">
                 <p className="uppercase tracking-wide text-sm font-bold mb-2">
@@ -375,15 +376,15 @@ const Home = () => {
                 <motion.h1 initial={{ opacity: 0, y: -70 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{
-                    once: true,        // Only animate once
-                    margin: "-10%",    // Start animation 20% before element enters viewport
+                    once: true,        
+                    margin: "-10%",    
                   }}
                   transition={{
                     duration: 1,
                     ease: [0.16, 1, 0.3, 1],
                     type: "spring",
                     stiffness: 100,
-                    damping: 10         // Added for better spring control
+                    damping: 10         
                   }} className="text-[#2471A3] text-3xl uppercase font-bold">
                   Welcome to The Better Day
                 </motion.h1>
@@ -445,7 +446,7 @@ const Home = () => {
           transition={{
             duration: 0.8,
             ease: "easeOut",
-            delay: index * 0.3 // Each item gets 0.3s more delay than previous
+            delay: index * 0.3 
           }} className="bg-[#2471A3]  rounded-lg p-4 flex flex-col items-center">
                       {/* Icon Container */}
                       <div className=" relative w-12 h-12 rounded-full mb-2 bg-white flex items-center justify-center">

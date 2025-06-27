@@ -37,7 +37,7 @@ const Home = () => {
 
   const handleSelect = (currency) => {
     setSelected(currency);
-    setOpen(false); 
+    setOpen(false);
   };
   const iconMap = {
     'Orphan Support': orphanSupport,
@@ -72,9 +72,9 @@ const Home = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{
                     duration: 1,
-                    ease: [0.16, 1, 0.3, 1], 
-                    type: "spring", 
-                    stiffness: 100 
+                    ease: [0.16, 1, 0.3, 1],
+                    type: "spring",
+                    stiffness: 100
                   }} className=" text-2xl sm:text-3xl font-bold mb-2 sm:mb-3">
                   We Need Your Support
                 </motion.h2>
@@ -119,17 +119,17 @@ const Home = () => {
                 <motion.h2 initial={{ opacity: 0, y: -70 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{
-                    duration: 1,
-                    ease: [0.16, 1, 0.3, 1], 
-                    type: "spring", 
-                    stiffness: 100 
+                    duration: 2,
+                    ease: [0.16, 1, 0.3, 2],
+                    type: "spring",
+                    stiffness: 50
                   }} className=" text-3xl lg:text-4xl font-bold mb-4">We Need Your Support</motion.h2>
                 <motion.p
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{
-                    duration: 1.5,
+                    duration: 2.5,
                     ease: "easeOut",
                     delay: 0.3
                   }} className="paragraph-fade text-lg mb-6">
@@ -142,7 +142,7 @@ const Home = () => {
                   <motion.button
                     initial={{ opacity: 0, x: -80 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
+                    transition={{ duration: 0.9, delay: 0.2 }}
                     viewport={{ once: true }}
                     className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded transition-colors"
                   >
@@ -180,7 +180,7 @@ const Home = () => {
                     <div
                       className="bounce-circle w-auto rounded-full flex items-center justify-center mb-1 md:mb-2"
                       style={{
-                        animationDelay: `${index * 0.15}s` 
+                        animationDelay: `${index * 0.15}s`
                       }}
                     >
                       <img
@@ -292,8 +292,8 @@ const Home = () => {
                 initial={{ opacity: 0, x: -90 }}
                 animate={inView ? { opacity: 1, x: 0 } : {}}
                 transition={{
-                  delay: index * 0.2,
-                  duration: 0.8,
+                  delay: index * 0.3,
+                  duration: 1.0,
                   ease: "easeOut"
                 }}
                 key={index}
@@ -320,12 +320,12 @@ const Home = () => {
             <div className="bg-[#2471A3] md:h-[80vh] py-5 md:py-2 md:px-20 text-white p-2 md:p-8 flex flex-wrap items-center">
               <div className="md:w-1/2 w-full mb-3 md:mb-0">
                 <motion.img
-                  initial={{ opacity: 0, x: 600 }} 
+                  initial={{ opacity: 0, x: 1000 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-20%" }}
                   transition={{
-                    duration: 1.2,
-                    ease: [0.19, 1, 0.3, 1] 
+                    duration: 1.9,
+                    ease: [0.19, 1, 0.3, 1]
                   }}
                   className="w-full h-auto rounded-lg"
                   src="https://preview.colorlib.com/theme/lovecare/images/bg_1.jpg.webp"
@@ -333,12 +333,12 @@ const Home = () => {
                 />
               </div>
               <motion.div
-                initial={{ opacity: 0, x: -400 }}
+                initial={{ opacity: 0, x: -1000 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-20%" }}
                 transition={{
-                  duration: 1.8,
-                  ease: [0.16, 1, 0.3, 1] 
+                  duration: 1.9,
+                  ease: [0.16, 1, 0.3, 1]
                 }}
                 className="md:w-1/2 md:pl-8 md:px-5 w-full">
                 <p className="uppercase tracking-wide text-sm font-bold mb-2">
@@ -376,22 +376,22 @@ const Home = () => {
                 <motion.h1 initial={{ opacity: 0, y: -70 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{
-                    once: true,        
-                    margin: "-10%",    
+                    once: true,
+                    margin: "-10%",
                   }}
                   transition={{
                     duration: 1,
                     ease: [0.16, 1, 0.3, 1],
                     type: "spring",
                     stiffness: 100,
-                    damping: 10         
+                    damping: 10
                   }} className="text-[#2471A3] text-3xl uppercase font-bold">
                   Welcome to The Better Day
                 </motion.h1>
                 <motion.h2 initial={{ opacity: 0, x: -80 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    viewport={{ once: true }} className="text-2xl text-gray-400 mt-2 mb-4">
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  viewport={{ once: true }} className="text-2xl text-gray-400 mt-2 mb-4">
                   Bringing Clean Water to Communities
                 </motion.h2>
                 <motion.p
@@ -440,14 +440,14 @@ const Home = () => {
                     }
                   ].map((item, index) => (
                     <motion.div key={index}
-          initial={{ opacity: 0, y: -100 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{
-            duration: 0.8,
-            ease: "easeOut",
-            delay: index * 0.3 
-          }} className="bg-[#2471A3]  rounded-lg p-4 flex flex-col items-center">
+                      initial={{ opacity: 0, y: -100 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{
+                        duration: 0.8,
+                        ease: "easeOut",
+                        delay: index * 0.3
+                      }} className="bg-[#2471A3]  rounded-lg p-4 flex flex-col items-center">
                       {/* Icon Container */}
                       <div className=" relative w-12 h-12 rounded-full mb-2 bg-white flex items-center justify-center">
                         {/* Centered Image */}

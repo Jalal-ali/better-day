@@ -13,12 +13,12 @@ const About = () => {
           <div className="flex flex-col md:flex-row items-center gap-8">
             {/* Text Content (Left on desktop, top on mobile) */}
             <motion.div
-              initial={{ opacity: 0, x: 350 }}
+              initial={{ opacity: 0, x: 1000 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-20%" }}
               transition={{
-                duration: 1.8,
-                ease: [0.16, 1, 0.3, 1] // Smooth deceleration
+                duration: 1.9,
+                ease: [0.16, 1, 0.3, 1] 
               }}  className="md:w-1/2 w-full">
               <h1 className="text-3xl md:text-4xl font-bold text-[#2471A3] mb-6">About Us</h1>
               <div className="prose text-gray-700">
@@ -29,12 +29,12 @@ const About = () => {
 
             {/* Image Placeholder (Right on desktop, bottom on mobile) */}
             <motion.div
-              initial={{ opacity: 0, x: -400 }}
+              initial={{ opacity: 0, x: -1000 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-20%" }}
               transition={{
-                duration: 1.8,
-                ease: [0.16, 1, 0.3, 1] // Smooth deceleration
+                duration: 1.9,
+                ease: [0.16, 1, 0.3, 1] 
               }} className="md:w-1/2 w-full">
               <div className="bg-[#2470a367] rounded-lg p-0.5 aspect-[4/3] w-full flex items-center justify-center overflow-hidden">
                 <img
@@ -53,12 +53,12 @@ const About = () => {
           <div className="flex flex-col md:flex-row items-center gap-8">
             {/* Image (Left on desktop, top on mobile) */}
             <motion.div
-              initial={{ opacity: 0, x: 350 }}
+              initial={{ opacity: 0, x: 1000 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-20%" }}
               transition={{
-                duration: 1.8,
-                ease: [0.16, 1, 0.3, 1] // Smooth deceleration
+                duration: 1.9,
+                ease: [0.16, 1, 0.3, 1] 
               }}  className="md:w-1/2 w-full">
               <div className="bg-[#2470a367] p-0.5 rounded-lg aspect-[4/3] w-full flex items-center justify-center overflow-hidden">
                 <img
@@ -71,12 +71,12 @@ const About = () => {
 
             {/* Text Content (Right on desktop, bottom on mobile) */}
             <motion.div
-              initial={{ opacity: 0, x: -400 }}
+              initial={{ opacity: 0, x: -1000 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-20%" }}
               transition={{
-                duration: 1.8,
-                ease: [0.16, 1, 0.3, 1] // Smooth deceleration
+                duration: 1.9,
+                ease: [0.16, 1, 0.3, 1] 
               }} className="md:w-1/2 w-full md:order-2 order-1">
               <h1 className="text-3xl md:text-4xl font-bold text-[#2471A3] mb-6">Our Mission</h1>
               <div className="prose text-gray-700">
@@ -96,12 +96,12 @@ const About = () => {
           <div className="flex flex-col md:flex-row items-center gap-8">
             {/* Text Content (Left on desktop, top on mobile) */}
             <motion.div
-              initial={{ opacity: 0, x: 350 }}
+              initial={{ opacity: 0, x: 1000 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-20%" }}
               transition={{
-                duration: 1.8,
-                ease: [0.16, 1, 0.3, 1] // Smooth deceleration
+                duration: 1.9,
+                ease: [0.16, 1, 0.3, 1] 
               }}  className="md:w-1/2 w-full">
               <h1 className="text-3xl md:text-4xl font-bold text-[#2471A3] mb-6">Get Involved</h1>
               <div className="prose text-gray-700">
@@ -130,12 +130,12 @@ const About = () => {
 
             {/* Image Placeholder (Right on desktop, bottom on mobile) */}
             <motion.div
-              initial={{ opacity: 0, x: -400 }}
+              initial={{ opacity: 0, x: -1000 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-20%" }}
               transition={{
-                duration: 1.8,
-                ease: [0.16, 1, 0.3, 1] // Smooth deceleration
+                duration: 1.9,
+                ease: [0.16, 1, 0.3, 1] 
               }} className="md:w-1/2 w-full">
               <div className="bg-[#2470a367] rounded-lg p-0.5 aspect-[4/3] w-full flex items-center justify-center overflow-hidden">
                 <img

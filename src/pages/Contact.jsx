@@ -1,5 +1,7 @@
 import React from 'react'
 import contact from '../assets/contact.jpg'
+import { motion } from 'framer-motion';
+
 
 const Contact = () => {
   return (
@@ -9,7 +11,14 @@ const Contact = () => {
     <div className="flex flex-col lg:flex-row gap-8 items-center">
       {/* Contact Form - Left Side */}
       <div className="lg:w-1/2 w-full">
-        <div className="bg-white p-6 md:p-8 rounded-lg shadow-md">
+        <motion.div
+                        initial={{ opacity: 0, scale: 0.4 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{
+                          duration: 0.6,
+                          ease: "easeOut"
+                        }} className="bg-white p-6 md:p-8 rounded-lg shadow-md">
           <h2 className="text-2xl font-bold text-[#2471A3] mb-4">Contact Us</h2>
           <form className="space-y-4">
             <div>
@@ -43,11 +52,19 @@ const Contact = () => {
               Send Message
             </button>
           </form>
-        </div>
+        </motion.div>
       </div>
 
       {/* Image - Right Side */}
-      <div className="lg:w-1/2 w-full">
+      <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 1.5,
+                    ease: "easeOut",
+                    delay: 0.3
+                  }}  className="lg:w-1/2 w-full">
         <div className="rounded-lg overflow-hidden shadow-md">
           <img 
             src={contact}
@@ -55,7 +72,7 @@ const Contact = () => {
             className="w-full h-auto object-cover"
           />
         </div>
-      </div>
+      </motion.div>
     </div>
   </div>
 </div>

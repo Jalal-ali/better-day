@@ -334,7 +334,7 @@ const Home = () => {
                 />
               </div>
               <motion.div
-                initial={{ opacity: 0, x: -400 }} 
+                initial={{ opacity: 0, x: -400 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-20%" }}
                 transition={{
@@ -374,25 +374,57 @@ const Home = () => {
           <div className="container bg-[#F7F9F9] md:px-10 px-2 mx-auto py-12">
             <div className="flex flex-col md:flex-row">
               <div className="md:p-8 p-2 md:pr-40 w-full md:w-2/3">
-                <h1 className="text-[#2471A3] text-3xl uppercase font-bold">
+                <motion.h1 initial={{ opacity: 0, y: -70 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{
+                    once: true,        // Only animate once
+                    margin: "-10%",    // Start animation 20% before element enters viewport
+                  }}
+                  transition={{
+                    duration: 1,
+                    ease: [0.16, 1, 0.3, 1],
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 10         // Added for better spring control
+                  }} className="text-[#2471A3] text-3xl uppercase font-bold">
                   Welcome to The Better Day
-                </h1>
-                <h2 className="text-2xl text-gray-400 mt-2 mb-4">
+                </motion.h1>
+                <motion.h2 initial={{ opacity: 0, x: -80 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    viewport={{ once: true }} className="text-2xl text-gray-400 mt-2 mb-4">
                   Bringing Clean Water to Communities
-                </h2>
-                <p className="text-gray-700 mb-6">
+                </motion.h2>
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 1.5,
+                    ease: "easeOut",
+                    delay: 0.3
+                  }} className="text-gray-700 mb-6">
                   At The Better Day, our mission is to provide clean, accessible water
                   through hand pumps, transforming lives and supporting brighter
                   futures. Many communities still lack reliable access to safe
                   drinking water, but with each hand pump we install, we bring health,
                   hygiene, and hope closer to those in need.
-                </p>
-                <p className="text-gray-700 mb-6">
+                </motion.p>
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 1.5,
+                    ease: "easeOut",
+                    delay: 0.3
+                  }}
+                  className="text-gray-700 mb-6">
                   Our hand pumps reduce the time spent fetching water, allowing
                   children to focus on their education and families to improve their
                   lives. Join us in making a better day for countless individuals by
                   supporting our clean water initiatives.
-                </p>
+                </motion.p>
                 <div className="flex flex-wrap gap-4">
                   {[
                     {
@@ -408,9 +440,17 @@ const Home = () => {
                       text: 'Be A Volunteer'
                     }
                   ].map((item, index) => (
-                    <div key={index} className="bg-[#2471A3] rounded-lg p-4 flex flex-col items-center">
+                    <motion.div key={index}
+          initial={{ opacity: 0, y: -100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 0.8,
+            ease: "easeOut",
+            delay: index * 0.3 // Each item gets 0.3s more delay than previous
+          }} className="bg-[#2471A3]  rounded-lg p-4 flex flex-col items-center">
                       {/* Icon Container */}
-                      <div className="relative w-12 h-12 rounded-full mb-2 bg-white flex items-center justify-center">
+                      <div className=" relative w-12 h-12 rounded-full mb-2 bg-white flex items-center justify-center">
                         {/* Centered Image */}
                         <img
                           src={item.icon}
@@ -420,12 +460,19 @@ const Home = () => {
                       </div>
                       {/* Text Label */}
                       <span className="text-white font-bold text-sm">{item.text}</span>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
               {/* donation form section  */}
-              <div
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.6,
+                  ease: "easeOut"
+                }}
                 data-aos="fade-up-left"
                 className="bg-[#2471A3] rounded-lg text-white p-8 w-full md:w-1/3 aos-init"
               >
@@ -511,7 +558,7 @@ const Home = () => {
                     Donate Now
                   </button>
                 </form>
-              </div>
+              </motion.div>
 
 
             </div>

@@ -13,7 +13,7 @@ const About = () => {
           <div className="flex flex-col md:flex-row items-center gap-8">
             {/* Text Content (Left on desktop, top on mobile) */}
             <motion.div
-              initial={{ opacity: 0, x: 1000 }}
+              initial={{ opacity: 0, x: 500 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-20%" }}
               transition={{
@@ -29,7 +29,7 @@ const About = () => {
 
             {/* Image Placeholder (Right on desktop, bottom on mobile) */}
             <motion.div
-              initial={{ opacity: 0, x: -1000 }}
+              initial={{ opacity: 0, x: -500 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-20%" }}
               transition={{
@@ -53,7 +53,7 @@ const About = () => {
           <div className="flex flex-col md:flex-row items-center gap-8">
             {/* Image (Left on desktop, top on mobile) */}
             <motion.div
-              initial={{ opacity: 0, x: 1000 }}
+              initial={{ opacity: 0, x: 500 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-20%" }}
               transition={{
@@ -71,7 +71,7 @@ const About = () => {
 
             {/* Text Content (Right on desktop, bottom on mobile) */}
             <motion.div
-              initial={{ opacity: 0, x: -1000 }}
+              initial={{ opacity: 0, x: -500 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-20%" }}
               transition={{
@@ -96,7 +96,7 @@ const About = () => {
           <div className="flex flex-col md:flex-row items-center gap-8">
             {/* Text Content (Left on desktop, top on mobile) */}
             <motion.div
-              initial={{ opacity: 0, x: 1000 }}
+              initial={{ opacity: 0, x: 500 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-20%" }}
               transition={{
@@ -130,7 +130,7 @@ const About = () => {
 
             {/* Image Placeholder (Right on desktop, bottom on mobile) */}
             <motion.div
-              initial={{ opacity: 0, x: -1000 }}
+              initial={{ opacity: 0, x: -500 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-20%" }}
               transition={{

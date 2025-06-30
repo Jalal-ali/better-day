@@ -199,10 +199,10 @@ const Home = () => {
             <div className="flex flex-col md:flex-row gap-3 md:gap-4">
               {/* Currency Selector */}
               <div className="flex-1 bg-white rounded-lg p-2 flex items-center">
-                <div className="relative inline-block w-full">
+                <div className="relative inline-block md:w-auto w-48">
                   <button
                     onClick={() => setOpen(!open)}
-                    className="w-full flex items-center justify-between border px-3 py-2 rounded-md bg-white text-gray-700 text-sm md:text-base"
+                    className="w-full flex items-center justify-between border border-gray-500/10 shadow-sm shadow-gray-600/40 px-3 py-2 rounded-md bg-white hover:bg-gray-400/20 text-gray-700 text-sm md:text-base"
                   >
                     <div className="flex items-center gap-2 mx-1">
                       <Flag code={selected.country} style={{ width: 20, height: 14 }} />
@@ -212,7 +212,7 @@ const Home = () => {
                   </button>
 
                   {open && (
-                    <div className="absolute z-10 mt-1 w-full bg-white shadow border rounded-md">
+                    <div className="absolute z-10 mt-1 w-full bg-white shadow border-2 border-gray-500/20 rounded-md">
                       {currencies.map((currency) => (
                         <div
                           key={currency.code}
@@ -228,8 +228,8 @@ const Home = () => {
                 </div>
                 <input
                   type="number"
-                  placeholder="150"
-                  className="bg-white border-none outline-none text-gray-700 w-20 md:w-auto ml-2 text-sm md:text-base"
+                  placeholder="199"
+                  className="w-full bg-white border-none outline-none text-gray-700 w- md:w-auto ml-2 text-sm md:text-base"
                 />
               </div>
 
@@ -249,9 +249,10 @@ const Home = () => {
 
               {/* Quick Donate Button */}
               <div className="flex-1 bg-blue-200 rounded-lg p-2 flex flex-col md:flex-row items-center justify-between gap-2">
-                <button className="bg-gradient-to-r from-[#2471A3] to-[#165e8d] text-white font-bold py-2 px-4 rounded-full w-full md:w-auto text-sm md:text-base">
+
+                <a href="/admin" className="bg-gradient-to-r from-[#2471A3] to-[#114c74] hover:from-[#2988c7] hover:to-[#02538a] text-white font-bold py-2 px-4 rounded-full w-full md:w-auto text-sm md:text-base inline-block text-center">
                   QUICK DONATE
-                </button>
+                </a>
                 <div className="flex items-center justify-center md:justify-end space-x-2 md:space-x-3">
                   <img src={Visa} alt="Visa" className='w-8 h-8 md:w-10 md:h-10' />
                   <img src={masterCard} alt="MasterCard" className='w-8 h-8 md:w-10 md:h-10' />
@@ -306,7 +307,7 @@ const Home = () => {
                 />
                 <h2 className="text-xl text-black font-bold mb-2">{card.title}</h2>
                 <p className="text-gray-600 mb-4">{card.text}</p>
-                <a href="#" className="text-[#2471A3] font-semibold">
+                <a href="#" className="text-[#2471A3] hover:text-[#2988c7] font-normal hover:font-semibold">
                   {card.link}
                 </a>
               </motion.div>
@@ -320,7 +321,7 @@ const Home = () => {
             <div className="bg-[#2471A3] md:h-[80vh] py-5 md:py-2 md:px-20 text-white p-2 md:p-8 flex flex-wrap items-center">
               <div className="md:w-1/2 w-full mb-3 md:mb-0">
                 <motion.img
-                  initial={{ opacity: 0, x: 1000 }}
+                  initial={{ opacity: 0, x: 400 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-20%" }}
                   transition={{
@@ -333,7 +334,7 @@ const Home = () => {
                 />
               </div>
               <motion.div
-                initial={{ opacity: 0, x: -1000 }}
+                initial={{ opacity: 0, x: -400 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-20%" }}
                 transition={{
@@ -360,7 +361,7 @@ const Home = () => {
                   Join us in making a lasting impact by helping us bring clean water
                   and hope to those in need.
                 </p>
-                <a href="#" className="text-white font-semibold underline">
+                <a href="#" className="text-white hover:text-[#c2e6ff] font-normal hover:font-semibold">
                   Learn More →
                 </a>
               </motion.div>
@@ -550,12 +551,12 @@ const Home = () => {
                   </div>
 
                   {/* Submit Button */}
-                  <button
-                    type="submit"
-                    className="w-full mt-6 bg-white text-[#2471A3] hover:bg-gray-100 font-bold py-3 px-4 rounded-lg transition-colors duration-200 shadow-md"
-                  >
-                    Donate Now
-                  </button>
+                  <a
+  href="/admin"
+  className="w-full mt-6 bg-white text-[#2471A3] hover:bg-gray-100 font-bold py-3 px-4 rounded-lg transition-colors duration-200 shadow-md inline-block text-center"
+>
+  Donate Now
+</a>
                 </form>
               </motion.div>
 

@@ -53,9 +53,12 @@ const Navbar = () => {
           </a>
         </li>
         <li>
-          <button className="text-white focus:ring-2 font-medium rounded-sm text-sm md:py-1 py-1 px-4.5 block md:mb-0 mb-2 bg-[#2574a7] hover:bg-blue-700 focus:outline-none focus:ring-black">
-            Login
-          </button>
+          <a 
+  href="/admin" 
+  className="text-white focus:ring-2 font-medium rounded-sm text-sm md:py-1 py-1 px-4.5 block md:mb-0 mb-2 bg-[#2574a7] hover:bg-blue-700 focus:outline-none focus:ring-black inline-block text-center"
+>
+  Login
+</a>
         </li>
         {/* <button type="button" class="text-white focus:ring-2 font-medium rounded-sm text-sm md:py-1 py-1 px-4.5 block md:mb-0 mb-2 bg-[#2574a7] hover:bg-blue-700 focus:outline-none focus:ring-black">Login</button> */}
 
